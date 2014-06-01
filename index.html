@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8">
+        <title>World Cup 2014</title>  
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+
+		<script src="http://code.angularjs.org/1.2.9/angular.js"></script>
+		<script src="http://code.angularjs.org/1.2.9/angular-animate.min.js"></script>
+		<script src="main.js"></script>
+	</head>
+
+    <body ng-app="WorldCupApp" ng-controller="MyCtrl">
+
+	    <div class="container">
+	
+		    <h1>World Cup 2014: England Players</h1>
+
+		    <!--SEARCH TEXT-->
+		    <form class="form-search">
+		        <div class="input-append">
+		            <input type="text" 
+		            		ng-model="search"
+		            		placeholder="Search"
+		            		class="form-control" />
+		        </div>
+			</form>
+	    
+	        <!--LIST-->
+	        <ul class="animate-container" ng-cloak>
+	            <li class="animate-repeat"
+            		ng-repeat="player in players | filter:search">
+            		<div class="row" style="vertical-align: middle">
+	                    <div class="col-md-2">
+			            	<img class="displayPhoto" ng-src="images/{{player.photo}}.jpg" />
+	                    </div>
+		            	<div class="col-md-1">
+		            		<h2>{{player.position}}</h2>
+	                    </div>
+	                    <div class="col-md-4">
+			            	<h2>{{player.name}}</h2>
+		            		<div>{{player.nationality}} and {{player.club}}</div>
+		            	</div>
+						<div class="col-md-1">
+							<h2>{{player.caps}}</h2>
+		            		<div>caps</div>
+	                    </div>
+	                    <div class="col-md-1">
+	                    	<h2>{{player.goals}}</h2>
+		            		<div>goals</div>
+	                    </div>
+	                    <div class="col-md-2">
+			            	<img class="displayFlag" ng-src="images/{{player.nationality}}.jpg" />  
+	                    </div>
+                	</div>
+	            </li> 
+	        </ul>
+
+	        <!-- SELECTED ITEM -->
+	        <div class="selectedItems">{{selectedPlayer}}</div>
+
+	    </div>
+    </body>
+</html>
